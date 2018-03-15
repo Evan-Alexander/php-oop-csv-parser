@@ -46,6 +46,16 @@
       </tr>
     <?php }?>
     </table>
+    <?php
+
+    $sql = "SELECT * FROM bicycles";
+    $result = Bicycle::$database->query($sql);
+    $row = $result->fetch_assoc();
+    $result->free();
+
+    echo "Brand: " . $row['brand'];
+
+     ?>
   </div>
 
 </div>
