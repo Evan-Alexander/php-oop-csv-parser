@@ -30,6 +30,17 @@
         return self::find_by_sql($sql);
       }
 
+      static public function find_by_id($id) {
+        $sql = "SELECT * FROM bicycles ";
+        $sql .= "WHERE id='" . self::$database->escape_string($id) . "'";
+        $obj_array = self::find_by_sql($sql);
+        if(!empty($obj_array)) {
+          return array_shift($obj_array);
+        } else {
+          return false;
+        }
+      }
+
       static protected function instantiate($record) {
         $object = new self;
 
@@ -96,6 +107,9 @@
             // }
         }
 
+        public function name() {
+          return "{$this->brand} {$this->model} {$this->year}";
+        }
         public function weight_kg() {
             return number_format($this->weight_kg, 2) . 'kg';
         }
