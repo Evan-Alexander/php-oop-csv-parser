@@ -1,6 +1,11 @@
 <?php
   ob_start(); // turn on output buffering
-
+  $error_mode = true;
+  //toggle errors
+  if($error_mode){
+      error_reporting(E_ALL);
+      ini_set("display_errors", 1);
+  }
   // session_start(); // turn on sessions if needed
 
   // Assign file paths to PHP constants
